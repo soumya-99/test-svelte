@@ -5,6 +5,10 @@
 	let inputText: string = ""
 	let inputColor: string = "#aaa"
 	let todos: any[] = []
+
+    const deleteTodo = (index: number) => {
+        todos = todos.filter((todo, i) => i !== index)
+    }
 </script>
 
 <svelte:head>
@@ -51,6 +55,11 @@
 	<ul>
 		{#each todos as todo}
 			<li style="color: {todo.color}">{todo.text}</li>
+            <button class="dlt_btn" on:click={() => {
+                deleteTodo(todos.indexOf(todo))
+            }}>
+                Done
+            </button>
 		{/each}
 		<li style="color: {inputColor}">
 			{inputText || "Enter text in textbox (Realtime update)"}
@@ -92,6 +101,20 @@
 	.btn-1 {
 		background-color: #16d804;
 	}
+
+    .dlt_btn {
+        background-color: #ffd30f;
+        border: none;
+        border-radius: 10px;
+        color: rgb(56, 46, 1);
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        font-family: google sans;
+        font-size: 20px;
+    }
 
 	.count {
 		font-size: 60px;
