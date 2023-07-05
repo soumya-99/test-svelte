@@ -1,6 +1,11 @@
 <script lang="ts">
 	let count: number = 0
-    console.log('Pagee');
+    console.log('Pagee')
+
+
+    let inputText: string = ""
+    let inputColor: string = "#aaa"
+    let todos: string[] = []
 </script>
 
 <svelte:head>
@@ -22,12 +27,32 @@
 </div>
 
 
+
+<div class="todo">
+    <input type="text" placeholder="Type something" bind:value={inputText}>
+    <input type="color" bind:value={inputColor}>
+
+    <button class="btn" on:click={() => {
+        todos = [...todos, inputText]
+        inputText = ""
+    }}>
+        Add Todo
+    </button>
+</div>
+
+<div class="view_todo">
+    <ul>
+        {#each todos as todo}
+            <li style="color: {inputColor}">{todo}</li>
+        {/each}
+    </ul>
+</div>
+
 <style>
     .container {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        height: 100vh;
     }
 
     .btn {
@@ -53,5 +78,13 @@
         font-size: 60px;
         font-family: google sans;
         color: #227c16;
+    }
+
+
+    .todo {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px;
     }
 </style>
