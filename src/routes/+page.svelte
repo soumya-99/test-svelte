@@ -41,6 +41,7 @@
 			inputText = ""
 			inputColor = "#aaa"
 		}}
+        disabled = {inputText === ""}
 	>
 		Add Todo
 	</button>
@@ -82,6 +83,11 @@
 		font-size: 20px;
 		font-weight: bold;
 	}
+
+    .btn:disabled {
+        background-color: #aaa;
+        cursor: not-allowed;
+    }
 
 	.btn-1 {
 		background-color: #16d804;
