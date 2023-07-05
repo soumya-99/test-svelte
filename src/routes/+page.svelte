@@ -115,7 +115,6 @@
 	}
 
 	input[type="color"] {
-		-webkit-appearance: none;
 		border: none;
 		width: 80px;
 		height: 50px;
